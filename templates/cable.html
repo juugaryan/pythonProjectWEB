@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <header>
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Устройсвта подключения для гитар</h1>
+        <p class="fs-5 text-body-secondary">На данной странице представленны все устройсвта подключения которые находятся в ассортименте, выбирайте любой который вам понравится!</p>
+      </div>
+    </header>
+      <p>На данный момент доступных товаров нет(</p>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      {% for cable in cables %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">{{ cable.title }}</h4>
+            </div>
+            <div class="card-body">
+              <img class="guitar_photo" src="{{ url_for('static', filename='img/' + cable.photo)}}" alt="law" height="220" width="320">
+              <h1 class="card-title pricing-card-title">{{ cable.price }}<small class="text-body-secondary fw-light">  ₽</small></h1>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

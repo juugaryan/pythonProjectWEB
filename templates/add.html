@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>Добавить новый товар</h1>
+    <p>
+        Cоздание товара:
+    </p>
+    <form method="post">
+        <input type="text" class="form-control" name="photo" id="photo" placeholder="Введите картинку. (Пример: les_paul.png)"><br>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Введите название товара"><br>
+        <input type="text" class="form-control" name="description" id="description" placeholder="Введите описание товара"><br>
+        <input type="number" class="form-control" name="popularity" id="popularity" placeholder="Введите популярность товара"><br>
+        <input type="number" class="form-control" name="price" id="price" placeholder="Введите стоимость товара"><br>
+        <button class="btn btn-success" type="submit" name="add">Добавить товар</button>   <button class="btn btn-success" type="submit" name="clear">Очистить товары</button>
+    </form>
+
+</div>
+{% endblock %}

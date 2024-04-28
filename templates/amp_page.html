@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    {% for amp in amps %}
+        {% if amp.id == id %}
+            <h1>{{ amp.title }}</h1>
+            <form method="post">
+                <img class="amp_photo" src="{{ url_for('static', filename='img/' + amp.photo)}}" alt="Amp" height="350" width="500">
+
+                <p>
+                </p>
+
+                <p>
+                    {% if text_content %}
+                        <p>{{ text_content }}</p>
+                    {% endif %}
+                <p>
+                    <button type="button" class="btn btn-success" onclick="window.location.href='{{ url_for('add_to_cart', id=amp.id) }}'">Добавить в корзину</button>
+                    {% for msg in get_flashed_messages() %}
+                        <div class="flash" style="color: red">{{msg}}</div>
+                        <p></p>
+                    {% endfor %}
+                </p>
+            </form>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

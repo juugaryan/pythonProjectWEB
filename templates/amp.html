@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <form>
+        <select id="dropdown-menu" onchange="location = this.value;">
+            <option value="" disabled selected>{{ from_req }}</option>
+            <option value="/index">Guitars</option>
+            <option value="/amp">Amplifiers</option>
+        </select>
+    </form>
+    <header>
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal text-body-emphasis">Комбоусилители</h1>
+        <p class="fs-5 text-body-secondary">На данной странице представленны все комбоусилители которые находятся в ассортименте, выбирайте любой который вам понравится!</p>
+      </div>
+    </header>
+    <form action="/amp" method="post" id="sortFormAmp" style="float: right">
+      <select id="sortposAmp" name="sort_pos">
+          <option value="" disabled selected>{{ sort_pos }}</option>
+          <option value="Популярность (по возрастанию)">Популярность (по возрастанию)</option>
+          <option value="Популярность (по убыванию)">Популярность (по убыванию)</option>
+          <option value="Цена (по возрастанию)">Цена (по возрастанию)</option>
+          <option value="Цена (по убыванию)">Цена (по убыванию)</option>
+      </select>
+    </form>
+    <p>ㅤ</p>
+    <script>
+        document.getElementById("sortposAmp").addEventListener("change", function() {
+            document.getElementById("sortFormAmp").submit();
+        });
+    </script>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      {% for amp in amps %}
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">{{ amp.title }}</h4>
+            </div>
+            <div class="card-body">
+              <img class="guitar_photo" src="{{ url_for('static', filename='img/' + amp.photo)}}" alt="law" height="220" width="320">
+              <h1 class="card-title pricing-card-title">{{ amp.price }}<small class="text-body-secondary fw-light">  ₽</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>{{ amp.description }}</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary" onclick="window.location.href='{{ url_for('show_amp_page', id=amp.id) }}'">Подробнее о товаре</button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <style>
+        .guitar_photo {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    {% for guitar in guitars %}
+        {% if guitar.id == id %}
+            <h1>{{ guitar.title }}</h1>
+            <form method="post">
+                <img class="guitar_photo" src="{{ url_for('static', filename='img/' + guitar.photo)}}" alt="Guitar" height="500" width="350">
+                <p>
+                </p>
+
+                <p>
+                    {% if text_content %}
+                        <p style="font-size: 22px">{{ text_content }}</p>
+                    {% endif %}
+                <p>
+                    <button type="button" class="btn btn-success" style="float: right" onclick="window.location.href='{{ url_for('add_to_cart', id=guitar.id) }}'">Добавить в корзину</button>
+                    {% for msg in get_flashed_messages() %}
+                        <div class="flash" style="color: red">{{msg}}</div>
+                        <p></p>
+                    {% endfor %}
+                    <p>ㅤ</p>
+                </p>
+            </form>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

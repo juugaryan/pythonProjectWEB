@@ -1,0 +1,13 @@
+body {
+    background-color: #343a40; /* тёмный цвет фона */
+    color: #ffffff; /* белый цвет текста */
+}
+
+.navbar {
+    background-color: #343a40; /* тёмный цвет навигационной панели */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #ffffff; /* белый цвет текста в навигации */
+}

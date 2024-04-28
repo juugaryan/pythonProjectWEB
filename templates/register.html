@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>Регистрация</h1>
+    <p>
+        Для регистрации введите ваше имя, почту и пароль.
+    </p>
+    <form method="post">
+        <input type="text" class="form-control" name="name" id="name" placeholder="Введите ваше имя"><br>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Введите вашу почту"><br>
+        <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль"><br>
+        <input type="password" class="form-control" name="password2" id="password2" placeholder="Повторите пароль"><br>
+        <button class="btn btn-success" type="submit" onclick="window.location.href='login.html'" name="add">Зарегистрироваться</button><a style="padding-left: 20px">Если у вас уже есть аккаунт, вы можете</a><a class="py-2 link-body-emphasis text-decoration-none" href="/login" style="padding-left: 5px">Войти</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="display-6 text-center mb-4">Ваш идеальный сетап на {{ budget }} ₽</h2>
+<div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th style="width: 34%;"></th>
+            <th style="width: 22%;"></th>
+            <th style="width: 22%;"></th>
+            <th style="width: 22%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Гитара</th>
+            <td>
+              {% for guitar in guitars %}
+                {% if guitar.id == setup_budget.guitar_id %}
+                  <a class="link-secondary text-decoration-none" href="{{ url_for('show_guitar_page', id=guitar.id) }}">{{ guitar.title }}</a>
+                  <p></p>
+                  <img class="guitar_photo" src="{{ url_for('static', filename='img/' + guitar.photo)}}" alt="law" height="100" width="100">
+                {% endif %}
+              {% endfor %}
+            </td>
+            <td></td>
+            <td>{{ setup_budget.guitar_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Комбоусилитель</th>
+            <td>
+              {% for amp in amps %}
+                {% if amp.id == setup_budget.amp_id %}
+                  <a class="link-secondary text-decoration-none" href="{{ url_for('show_amp_page', id=amp.id) }}">{{ amp.title }}</a>
+                  <p></p>
+                  <img class="amp_photo" src="{{ url_for('static', filename='img/' + amp.photo)}}" alt="law" height="100" width="100">
+                {% endif %}
+              {% endfor %}
+            </td>
+            <td></td>
+            <td>{{ setup_budget.amp_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Шнур</th>
+            <td>
+              <a>Ernie Ball</a>
+              <p></p>
+              <img class="photo" src="static/img/ernie_ball.png" alt="law" height="100" width="100">
+            </td>
+            <td></td>
+            <td>{{ setup_budget.cabel_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Педаль</th>
+            <td>
+              <a>Boss DS-1</a>
+              <p></p>
+              <img class="photo" src="static/img/boss.png" alt="law" height="100" width="100">
+            </td>
+            <td></td>
+            <td>{{ setup_budget.pedal_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Ремень</th>
+            <td>
+              <a>Dunlop BM</a>
+              <p></p>
+              <img class="photo" src="static/img/belt.png" alt="law" height="100" width="100">
+            </td>
+            <td></td>
+            <td>{{ setup_budget.belt_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Кейс</th>
+            <td>
+              <a>Gator GC-LED</a>
+              <p></p>
+              <img class="photo" src="static/img/case.png" alt="law" height="100" width="100">
+            </td>
+            <td></td>
+            <td>{{ setup_budget.case_price }}₽</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">Итого:</th>
+            <td></td>
+            <td></td>
+            <td>{{ setup_budget.prices() }}₽</td>
+          </tr>
+        </tbody>
+        <!--<tbody>
+          <tr>
+            <th scope="row" class="text-start">Permissions</th>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Sharing</th>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Unlimited members</th>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Extra security</th>
+            <td></td>
+            <td></td>
+            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+          </tr>
+        </tbody>
+        -->
+      </table>
+    </div>
+
+{% endblock %}

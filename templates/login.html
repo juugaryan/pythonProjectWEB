@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1>Вход в аккаунт</h1>
+    <p>
+        Введите данные от вашего аккаунта чтобы войти
+    </p>
+    {% for msg in get_flashed_messages() %}
+        <div class="flash" style="color: red">{{msg}}</div>
+        <p></p>
+    {% endfor %}
+    <form method="post">
+        <input type="text" class="form-control" name="name" id="name" placeholder="Введите ваше имя"><br>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Введите вашу почту"><br>
+        <input type="password" class="form-control" name="password1" id="password1" placeholder="Введите пароль"><br>
+        <button class="btn btn-success" type="submit" onclick="window.location.href='login.html'" name="add">Войти</button><a style="padding-left: 20px">Если у вас нет аккаунта, вы можете</a><a class="py-2 link-body-emphasis text-decoration-none" href="/register" style="padding-left: 5px">Зарегистрироваться</a>
+    </form>
+</div>
+{% endblock %}

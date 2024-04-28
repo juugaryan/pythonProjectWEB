@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h2 class="display-6 text-center mb-4">Корзина</h2>
+    <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th style="width: 34%;"></th>
+            <th style="width: 22%;"></th>
+            <th style="width: 22%;"></th>
+            <th style="width: 22%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for pos in cart_poss %}
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">{{ pos.title }}</th>
+            <td>
+                <img class="guitar_photo" src="{{ url_for('static', filename='img/' + pos.photo)}}" alt="law" height="100" width="100">
+            </td>
+            <td></td>
+            <td>{{ pos.price }}₽</td>
+          </tr>
+        {% endfor %}
+        {% if total_price != None %}
+          <tr>
+            <th scope="row" class="text-start" style="font-size: 24px">К оплате:</th>
+            <td></td>
+            <td></td>
+            <td>{{ total_price }}₽</td>
+          </tr>
+        {% endif %}
+        {% if total_price == None %}
+        <p align=center style="font-size: 22px; align: center">Корзина пуста(</p>
+        {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% if total_price != None %}
+    <p>ㅤ</p>
+    <button type="submit" class="btn btn-success" style="font-size: 20px; float: right; margin-bottom: 20px"
+                    onclick="window.location.href='{{ url_for('clear_cart') }}'">Clear</button>
+    <button type="submit" class="btn btn-success" style="font-size: 20px; float: right; margin-right: 20px; margin-bottom: 20px"
+                    onclick="window.location.href='buy/{{ total_price }}'">Buy</button>
+    <p>ㅤ</p>
+    {% endif %}
+</div>
+{% endblock %}
