@@ -182,7 +182,7 @@ class Addcart:
 
 
 def main():
-    app.run()
+    app.run(debug=False, host='0.0.0.0')
 
 #СТРАНИЧКИ
 @app.route('/')
