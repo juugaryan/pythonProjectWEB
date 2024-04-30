@@ -2,6 +2,13 @@
 
 {% block content %}
 <div>
+    <style>
+        .amp_photo {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
     {% for amp in amps %}
         {% if amp.id == id %}
             <h1>{{ amp.title }}</h1>
@@ -13,7 +20,7 @@
 
                 <p>
                     {% if text_content %}
-                        <p>{{ text_content }}</p>
+                        <p style="font-size: 22px">{{ text_content }}</p>
                     {% endif %}
                 <p>
                     <button type="button" class="btn btn-success" onclick="window.location.href='{{ url_for('add_to_cart', id=amp.id) }}'">Добавить в корзину</button>
